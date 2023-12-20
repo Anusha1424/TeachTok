@@ -25,13 +25,14 @@ import {
 import store from './src/store';
 import { Provider } from 'react-redux';
 import { useDispatch, useSelector } from 'react-redux'
-import { getUsers } from './src/actions/user'
+// import { getUsers } from './src/actions/user'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeIcon } from './src/assets/icons';
 import MCQScreen from './src/screens/MCQScreen';
 import HomeScreen from './src/screens/HomeScreen';
+import TopBar from './src/components/TopBar';
 
 const Tab = createBottomTabNavigator();
 
@@ -40,14 +41,6 @@ function Section(props:any): JSX.Element {
   const users = useSelector((state:any) => state.users.users)
   console.log(users);
 
-  useEffect(() => {
-    dispatch(getUsers([{
-     id: 1, 
-     name: "Emmanuel",
-     company: "Dusk",
-     catchPhrase: "Made to fly"
-    }]));
-  }, [dispatch])
   return(
     <View>
       <Text>Anusha Gadigatla</Text>
@@ -91,6 +84,9 @@ function App(): JSX.Element {
         <Stack.Screen name="Details" component={DetailsScreen} />
       </Stack.Navigator> */}
       <SafeAreaView style={backgroundStyle}>
+      <View style={{zIndex:1000,flex:1,position:'absolute',top:0,width:'100%'}}>
+    <TopBar/>
+    </View>
        <Tab.Navigator  screenOptions={{
     tabBarStyle: { position: 'absolute',backgroundColor:"#000" },
     tabBarActiveTintColor:"#fff",

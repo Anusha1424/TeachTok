@@ -18,27 +18,7 @@ const HomeScreen = () => {
   const dispatch = useDispatch()
   const item = useSelector((state:any) => state.users.users)
 
-  const [seconds, setSeconds] = useState(0); // 10 minutes in seconds
-
-  useEffect(() => {
-    let interval:any;
-
-   
-      interval = setInterval(() => {
-        setSeconds((prevSeconds:any) => prevSeconds + 1);
-      }, 1000);
-    
-
-    return () => clearInterval(interval);
-  }, [seconds]);
-
-
-  const formatTime = (time:any) => {
-    const minutes = Math.floor(time / 60);
-    const remainingSeconds = time % 60;
-    return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
-  };
-
+  
 
 
 //   console.log(item);
@@ -60,13 +40,15 @@ useEffect(()=>{
 
   
   return (
+    <>
+   
     <FlatList
       data={data}
       renderItem={({ item, index }) => (
         <RenderItem
           item={item}
           index={index}
-          time={formatTime(seconds)}
+         
         />
       )}
       keyExtractor={(item) => item.id}
@@ -77,6 +59,7 @@ useEffect(()=>{
       onEndReached={fetchMoreData}
       onEndReachedThreshold={0.1}
     />
+    </>
   );
 }
 return <></>
@@ -93,7 +76,7 @@ const RenderItem = ({ item, index,time } : any) => {
         <ImageBackground
         source={{uri:item.image}} style={{flex:1}}>
             <View style={{flex:1,padding:8}}>
-             <TopBar time={time}/>
+            
              <View style={{flex:1,flexDirection:"row"}}>
                 <View style={{flex:1,flexDirection:"column"}}>
                 <Question question={item.question}/>
