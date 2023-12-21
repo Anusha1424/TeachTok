@@ -1,15 +1,6 @@
 import React,{useEffect} from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
   TouchableOpacity,
-  Image,
-  ImageBackground
 } from 'react-native';
 import Option from './Option';
 

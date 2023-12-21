@@ -1,15 +1,8 @@
 import React,{useEffect,useState} from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
   Text,
-  useColorScheme,
   View,
-  TouchableOpacity,
   Image,
-  ImageBackground
 } from 'react-native';
 
 function TopBar(props:any): JSX.Element {

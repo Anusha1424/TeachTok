@@ -6,7 +6,7 @@ const initalState = {
 }
 export default function users(state = initalState, action:any) {
   switch (action.type) {
-    case type.GET_USERS_REQUESTED:
+    case type.GET_ITEMS_REQUESTED:
       return {
         ...state,
         loading: true
